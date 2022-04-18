@@ -39,7 +39,7 @@ const createScene = () => {
     //GEOMETRY AND OBJECTS//
 
 				
-
+  
   
     const geometry = new THREE.BoxGeometry( 10, 20, 10 );
     const material = new THREE.MeshPhongMaterial( {color: 0xffffff} );
@@ -48,7 +48,15 @@ const createScene = () => {
     scene.add( modelPlaceholder );
     
     const planegeo = new THREE.PlaneGeometry( 15, 9, 32 );
-    const planemat = new THREE.MeshBasicMaterial( {color: 0xffffff, side: THREE.DoubleSide} );
+
+    let imgloader = new THREE.TextureLoader();
+
+    // Load an image file into a custom material
+    const planemat = new THREE.MeshBasicMaterial({
+      map: imgloader.load('textures/DanyetRaz.jpg'), side: THREE.DoubleSide
+    });
+
+    // const planemat = new THREE.MeshBasicMaterial( {color: 0xffffff} );
     const plane = new THREE.Mesh( planegeo, planemat );
     plane.userData = {
       URL: "https://www.twitch.tv/danyetraz"
@@ -61,7 +69,9 @@ const createScene = () => {
     
     
     const planegeo2 = new THREE.PlaneGeometry( 15, 9, 32 );
-    const planemat2 = new THREE.MeshBasicMaterial( {color: 0xffffff, side: THREE.DoubleSide} );
+    const planemat2 = new THREE.MeshBasicMaterial( {
+      map: imgloader.load('textures/Raz.jpg'), side: THREE.DoubleSide
+    } );
     const plane2 = new THREE.Mesh( planegeo2, planemat2 );
     plane2.userData = {
       URL:"https://www.twitch.tv/raz404"
@@ -75,14 +85,16 @@ const createScene = () => {
   
     
     const planegeo3 = new THREE.PlaneGeometry( 15, 9, 33 );
-    const planemat3 = new THREE.MeshBasicMaterial( {color: 0xffffff, side: THREE.DoubleSide} );
+    const planemat3 = new THREE.MeshBasicMaterial({
+      map: imgloader.load('textures/Dany.jpg'), side: THREE.DoubleSide
+    } );
     const plane3 = new THREE.Mesh( planegeo3, planemat3 );
     plane3.userData = {
       URL:"https://www.twitch.tv/danycaligula"
     };
     objects.push(plane3);
     modelPlaceholder.add( plane3 );
-
+  
     plane3.position.set(0,-40,-20);
 
     //GEOMETRY AND OBJECTS END//
@@ -109,7 +121,7 @@ const createScene = () => {
           pointer.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
   
         }
-  
+// OBJECTS LINK AND ACTIVATION DISTANCE //
         var raycaster, mouse = { x : 0, y : 0 };
 
         init();
@@ -141,35 +153,16 @@ const createScene = () => {
           
               for ( var i = 0; i < intersects.length; i++ ) {
                   console.log( intersects[ i ].distance ); 
-                  if (intersects.length > 0 && intersects[ i ].distance< 65 && intersects[ i ].object.name != 'modelPlaceholder') {
+                  if (intersects.length > 0 && intersects[ i ].distance< 55 && intersects[ i ].object.name != 'modelPlaceholder') {
                     
                          window.open(intersects[i].object.userData.URL);
                     
                   }
-              }
-                  /*
-                      An intersection has the following properties :
-                          - object : intersected object (THREE.Mesh)
-                          - distance : distance from camera to intersection (number)
-                          - face : intersected face (THREE.Face3)
-                          - faceIndex : intersected face index (number)
-                          - point : intersection point (THREE.Vector3)
-                          - uv : intersection point in the object's UV coordinates (THREE.Vector2)
-                  */
-              }
+              }  
+        }
           
-          
-          
-      
-
-
-       
-
-       
-        
-       
-        
-        //controls.update() must be called after any manual changes to the camera's transform
+           
+// END //
 
         
 
@@ -180,14 +173,21 @@ const createScene = () => {
         
         window.addEventListener('wheel', onMouseWheel, false);
         function onMouseWheel(event) {
-
+        let scrollAmount = event.deltaY ;
+        let scrollSmooth = scrollAmount/200 * (0.2  * Math.PI);
           event.preventDefault();
           if (modelPlaceholder.position.y < 10 && modelPlaceholder.position.y > -10) {
-          modelPlaceholder.translateY( event.deltaY*0.0005);
-          plane.translateY( event.deltaY*0.004);
-          plane2.translateY( event.deltaY*0.004);
-          plane3.translateY( event.deltaY*0.004);      
-          modelPlaceholder.rotation.y += event.deltaY *0.0009;
+          modelPlaceholder.translateY( scrollSmooth*0.3);
+          plane.translateY( scrollSmooth*0.7001);
+          plane2.translateY( scrollSmooth*0.7001);
+          plane3.translateY( scrollSmooth*0.7001);
+          for (let i = 0; i < objects.length; i++) {
+            if(objects[i].position.y < 10 && objects[i].position.y > 0){
+            objects[i].rotateX(scrollSmooth*-0.02);
+            objects[i].rotateY(scrollSmooth*0.0008);
+          }
+          }
+          modelPlaceholder.rotation.y += scrollSmooth *0.2;
       
           }
           if (modelPlaceholder.position.y > 6.5) {
