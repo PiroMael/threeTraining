@@ -2,16 +2,16 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls'
-import { FirstPersonControls } from 'three/examples/jsm/controls/FirstPersonControls.js';
+import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { GlitchPass } from 'three/examples/jsm/postprocessing/GlitchPass.js';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
-import { CSS3DRenderer, CSS3DObject } from 'three/examples//jsm/renderers/CSS3DRenderer.js';
+import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
 import Stats from 'three/examples/jsm/libs/stats.module';
 
-let InPortal = false;
-let moveForward = false;
+let text1 ="DANYetRAZ";
+let font = undefined;
 			let moveBackward = false;
 			let moveLeft = false;
 			let moveRight = false;
@@ -98,6 +98,60 @@ const createScene = () => {
     plane3.position.set(0,-40,-20);
 
     //GEOMETRY AND OBJECTS END//
+
+    //TEXTS//
+
+
+
+
+
+      const fontloader = new FontLoader();
+
+      fontloader.load( 'fonts/Fugaz_One_Regular.json',function( font ) {
+          const textGeo = new TextGeometry('DANYetRAZ', {
+            font: font,
+            size:1,
+            height: 0.2,
+           
+       
+        }) ;
+        
+        const textMesh = new THREE.Mesh( textGeo, new THREE.MeshBasicMaterial( { color: 0xffffff } ) );
+        textMesh.position.set(-10,6,0);
+        plane.add( textMesh );
+
+        const textGeo2 = new TextGeometry('RAZ404', {
+          font: font,
+          size:1,
+          height: 0.2,
+        }) ;
+
+        const textMesh2 = new THREE.Mesh( textGeo2, new THREE.MeshBasicMaterial( { color: 0xffffff } ) );
+        textMesh2.position.set(-10,6,0);
+        plane2.add( textMesh2 );
+        
+
+        const textGeo3 = new TextGeometry('DanyCaligula', {
+          font: font,
+          size:1,
+          height: 0.2,
+        }) ;
+
+        const textMesh3 = new THREE.Mesh( textGeo3, new THREE.MeshBasicMaterial( { color: 0xffffff } ) );
+        textMesh3.position.set(10,6,0);
+        textMesh3.rotateY(Math.PI);
+        plane3.add( textMesh3 );
+      });   
+  
+
+
+
+
+
+
+    //TEXTS END//
+
+
 
     // document.addEventListener('mousedown', onDocumentMouseDown, false);
   const renderer = new THREE.WebGLRenderer({
