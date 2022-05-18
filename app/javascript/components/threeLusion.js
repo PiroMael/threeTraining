@@ -91,24 +91,7 @@ const createLusion = () => {
                   if((xhr.loaded / xhr.total) * 100 == 100){
                     loading = true;
                    
-                    audioLoader.load( 'ffx-ost-wandering-flame.mp3', function( buffer ) {
-                      sound.setBuffer( buffer );
-                      sound.setLoop( true );
-                      sound.setVolume( 0.5 );
-                      setTimeout(function () {
-                        sound.play();
-                    }, 1000);
-                      
-                      sound.setPlaybackRate (audiospeed);
-                      window.addEventListener('click', event => {
-                        audiospeed = audiospeed - 0.02;
-                        sound.setPlaybackRate (audiospeed);
-                        setTimeout(() => {
-                          audiospeed = 1.2;
-                          sound.setPlaybackRate (audiospeed);
-                        }, 4000);
-                      });
-                    });  
+                  
                   }
               },
               (error) => {
@@ -118,7 +101,24 @@ const createLusion = () => {
 
               
                
-         
+          audioLoader.load( 'ffx-ost-wandering-flame.mp3', function( buffer ) {
+            sound.setBuffer( buffer );
+            sound.setLoop( true );
+            sound.setVolume( 0.5 );
+            setTimeout(function () {
+              sound.play();
+          }, 1000);
+            
+            sound.setPlaybackRate (audiospeed);
+            window.addEventListener('click', event => {
+              audiospeed = audiospeed - 0.02;
+              sound.setPlaybackRate (audiospeed);
+              setTimeout(() => {
+                audiospeed = 1.2;
+                sound.setPlaybackRate (audiospeed);
+              }, 4000);
+            });
+          });    
         
 
 
