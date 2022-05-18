@@ -25,12 +25,13 @@ import "three";
 // Internal imports, e.g:
 
 import { initHomePage } from '../components/threeMain';
-// import { initSelect2 } from '../components/init_select2';
+import { initLusionPage } from '../components/threeLusion';
+import { initLoadPage } from '../components/loading';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
-  // initSelect2();
-
+  initLoadPage();
+  initLusionPage();
   initHomePage();
-
+  initLoadPage();
 });;
