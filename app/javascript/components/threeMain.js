@@ -206,9 +206,9 @@ const createScene = () => {
               var intersects = raycaster.intersectObjects( scene.children, true );
           
               for ( var i = 0; i < intersects.length; i++ ) {
-                  console.log( intersects[ i ].distance ); 
+                console.log("intersect ray");
                   if (intersects.length > 0 && intersects[ i ].distance< 55 && intersects[ i ].object.name != 'modelPlaceholder') {
-                    
+                        console.log("intersect ray");
                          window.open(intersects[i].object.userData.URL);
                     
                   }
@@ -260,7 +260,7 @@ const createScene = () => {
             modelPlaceholder.rotation.y = -10.86;
             
           }  
-            console.log(modelPlaceholder.rotation.y);
+          //  console.log(modelPlaceholder.rotation.y);
           
         }
         
