@@ -17,7 +17,6 @@
                            { name: "Celui qui ris en grinçant", twitchID:'RoughAggressiveNuggetsPartyTime',chaine:'DANYetRAZ' },
                            { name: "GNNNNNNNNNNNNNNN", twitchID:'GleamingObliqueGuanacoTinyFace-dRSplp5qHWfpp5Od',chaine:'DANYetRAZ' },
                            { name: "Le gauchisme expliqué par Raz", twitchID:'CuteHeadstrongKuduChefFrank',chaine:'DANYetRAZ' },
-                           { name: "usul nique le chat", twitchID:'WittyRichPassionfruitUnSane',chaine:'DANYetRAZ' },
                            { name: "RP Minecraft", twitchID:'DullImpossibleClintDancingBanana-SwlVcXOSsbM5GDNe',chaine:'DANYetRAZ' },
                            { name: "Le saut de raz", twitchID:'AnimatedRockyCrocodileShadyLulu-U_UBmAdycWc10Go9',chaine:'DANYetRAZ' },
                            { name: "LA FRANCE BORDEL !!!", twitchID:'DiligentRealDaikonWoofer-NiXOkisLY1Ms5mKK',chaine:'DANYetRAZ' },
