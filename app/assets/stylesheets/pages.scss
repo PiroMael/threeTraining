@@ -41,7 +41,7 @@ html {
     opacity: 1;
   }
   .clips-container{
-    background-color:rgba(167, 53, 233, 0.49);
+    border: 3px red dotted ;
     display:flex;
     justify-content: center;
     
@@ -49,6 +49,7 @@ html {
     height: 100%;
     position: absolute;
     color:white;
+    padding-top: 3em;
   }
   .clip-list{
     text-align:center;
@@ -60,5 +61,9 @@ html {
   }
   .Big-C-Head{
     text-align: center;
-    background-color:rgba(167, 53, 233, 0.49);
+    border: 3px red dotted ;
+  }
+  .channel-name{
+    text-align: center;
+    border: 3px red dotted ;
   }
