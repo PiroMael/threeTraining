@@ -6,5 +6,6 @@ class PagesController < ApplicationController
   end
 
   def clips
+    @clips = Clip.all
   end
 end
